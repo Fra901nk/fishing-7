@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore fishing rods, reels, tackle, and accessories at Jadhum Fishing Equipments.">
+    <meta name="theme-color" content="#061c2c">
+    <title>Jadhum Fishing Equipments</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#home" aria-label="Jadhum Fishing Equipments home">
+            <span class="brand-mark" aria-hidden="true">J</span>
+            <span>Jadhum <small>Fishing Equipments</small></span>
+        </a>
+        <nav class="navbar" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About us</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
+            <a class="nav-btn" href="#contact">Contact us</a>
+            <button class="cart-trigger" id="open-cart" type="button" aria-haspopup="dialog" aria-controls="cart-dialog">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                    <path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 1.9-1.4L21 8H6" />
+                    <circle cx="10" cy="20" r="1.5" />
+                    <circle cx="18" cy="20" r="1.5" />
+                </svg>
+                Quote list <span class="cart-count" id="cart-count">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <dialog class="cart-dialog" id="cart-dialog" aria-labelledby="cart-title">
+        <section class="cart-panel">
+            <div class="cart-header">
+                <div>
+                    <p class="eyebrow">Request product prices</p>
+                    <h2 id="cart-title">Your quote list</h2>
+                </div>
+                <button class="cart-close" id="close-cart" type="button" aria-label="Close quote list">&times;</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <p class="cart-empty" id="cart-empty">Your quote list is empty. Add the products you want prices for.</p>
+            <div class="cart-footer">
+                <p class="cart-summary"><span>Items</span><strong id="cart-total-items">0</strong></p>
+                <p class="cart-note">We will confirm the current price for each product before you place an order.</p>
+                <p class="quote-reference" id="quote-reference" hidden>Reference: <strong id="quote-reference-value"></strong></p>
+                <div class="quote-actions" id="quote-actions" hidden>
+                    <a class="quote-button quote-button-email" id="email-quote" href="#" target="_blank" rel="noopener noreferrer">Request prices by email</a>
+                    <a class="quote-button quote-button-text" id="whatsapp-quote" href="#" target="_blank" rel="noopener noreferrer">Request prices by WhatsApp</a>
+                    <div class="quote-fallbacks">
+                        <a id="email-app-quote" href="#">Use another email app</a>
+                        <a id="sms-quote" href="#">Send as SMS</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </dialog>
+
+    <p class="cart-status" id="cart-status" role="status" aria-live="polite"></p>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">Make every cast count</p>
+                <h1>Ready for your next <span>big catch?</span></h1>
+                <p>Find dependable fishing gear and helpful advice for your next day on the water.</p>
+                <a class="button button-primary" href="#products">Explore our gear</a>
+            </div>
+        </section>
+
+        <section class="products" id="products">
+            <div class="section-heading">
+                <p class="eyebrow">Gear up</p>
+                <h2>Fishing gear for every trip</h2>
+                <p>Explore essentials for freshwater, saltwater, shore, and boat fishing.</p>
+            </div>
+            <p class="product-disclaimer">Photos are illustrative; actual products and availability may vary.</p>
+            <div class="product-grid">
+                <article class="product-card" data-product-id="rods">
+                    <img class="product-image" src="images/photos/rods.jpg" alt="Fishing rods displayed at an outdoor bait rental shop" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Fishing Rods</h3>
+                        <p>Spinning, casting, surf, and travel rods for different waters and techniques.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="reels">
+                    <img class="product-image" src="images/photos/reels.jpg" alt="Angler handling a spinning reel and fishing line" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Fishing Reels</h3>
+                        <p>Spinning, baitcasting, and fly reels to pair with your fishing rod.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="line">
+                    <img class="product-image" src="images/photos/line.jpg" alt="Fishing line being spooled onto a reel" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Fishing Line</h3>
+                        <p>Monofilament, braid, and fluorocarbon lines for a range of fishing conditions.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="hooks">
+                    <img class="product-image" src="images/photos/hooks.jpg" alt="Close-up photograph of fishing hooks" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Hooks &amp; Terminal Tackle</h3>
+                        <p>Hooks, swivels, leaders, sinkers, and rigs for your tackle box.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="lures">
+                    <img class="product-image" src="images/photos/lures.jpg" alt="Assorted fishing lures on a light background" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Lures &amp; Bait</h3>
+                        <p>Hard baits, soft plastics, spoons, jigs, and baiting essentials.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="nets">
+                    <img class="product-image" src="images/photos/nets.jpg" alt="Fishing nets hanging to dry" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Nets &amp; Gaffs</h3>
+                        <p>Landing nets and fish-handling gear for bringing in your catch.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="storage">
+                    <img class="product-image" src="images/photos/storage.jpg" alt="Fishing lures organized in a tackle box" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Tackle Storage</h3>
+                        <p>Tackle boxes, utility trays, bags, and organizers for your gear.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="floats">
+                    <img class="product-image" src="images/photos/floats.jpg" alt="Red and white fishing bobber hanging from a line" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Floats &amp; Sinkers</h3>
+                        <p>Bobbers, floats, weights, and split shot for balanced presentations.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="apparel">
+                    <img class="product-image" src="images/photos/apparel.jpg" alt="Angler wearing waders while fishing in a river" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Apparel &amp; Waders</h3>
+                        <p>Weather-ready clothing, boots, gloves, and waders for days outdoors.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="electronics">
+                    <img class="product-image" src="images/photos/electronics.jpg" alt="Angler operating marine electronics on a boat" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Fishing Electronics</h3>
+                        <p>Fish finders, depth finders, and useful navigation accessories.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="boating">
+                    <img class="product-image" src="images/photos/boating.jpg" alt="Angler fishing from a red kayak" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Boating &amp; Safety</h3>
+                        <p>Life jackets, boat accessories, dry bags, and on-water essentials.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product-id="tools">
+                    <img class="product-image" src="images/photos/tools.jpg" alt="Angler using pliers to remove a hook from a fish" loading="lazy">
+                    <div class="product-card-content">
+                        <h3>Fishing Tools</h3>
+                        <p>Pliers, line cutters, scales, hook removers, and handy accessories.</p>
+                        <p class="product-price">Ask us for this product's price</p>
+                        <button class="add-to-cart" type="button">Add to quote list</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <p class="eyebrow">About Jadhum</p>
+            <h2>For the love of fishing</h2>
+            <p>Jadhum Fishing Equipments is here to help anglers find the gear they need. Whether you are getting started or planning your next outing, we are happy to help you choose the right essentials.</p>
+        </section>
+
+        <section class="services" id="services">
+            <div class="section-heading">
+                <p class="eyebrow">Here to help</p>
+                <h2>Support for every angler</h2>
+            </div>
+            <div class="service-grid">
+                <article class="service-card">
+                    <span aria-hidden="true">01</span>
+                    <h3>Gear guidance</h3>
+                    <p>Get help choosing equipment that suits your needs.</p>
+                </article>
+                <article class="service-card">
+                    <span aria-hidden="true">02</span>
+                    <h3>Everyday essentials</h3>
+                    <p>Browse practical gear for your next fishing trip.</p>
+                </article>
+                <article class="service-card">
+                    <span aria-hidden="true">03</span>
+                    <h3>Friendly service</h3>
+                    <p>We are glad to help with your fishing equipment questions.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <p class="eyebrow">Let's talk fishing</p>
+            <h2>Need a product price?</h2>
+            <p>Ask us for the current price of any item by email, WhatsApp, or SMS. We will confirm prices before you place an order.</p>
+            <div class="contact-actions">
+                <a class="button button-light" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=odhulobama%40gmail.com" target="_blank" rel="noopener noreferrer">Email via Gmail</a>
+                <a class="button button-light" href="https://wa.me/254727487448" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
+                <a class="button button-light" href="sms:+254727487448">Send SMS to +254 727 487 448</a>
+                <a class="button button-light" href="mailto:odhulobama@gmail.com">Use another email app</a>
+            </div>
+            <p class="contact-browse"><a href="#products">Browse our fishing gear</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <a class="footer-brand" href="#home">Jadhum Fishing Equipments</a>
+        <p>&copy; <span id="current-year">2026</span> Jadhum Fishing Equipments. All rights reserved.</p>
+        <p><a class="admin-link" href="/admin">Admin dashboard</a></p>
+        <details class="photo-credits">
+            <summary>Photo credits</summary>
+            <ul>
+                <li>Fishing rods by Jay Mantri; <a href="https://www.pexels.com/photo/fishing-fishing-tackle-fisherman-bait-2542/" target="_blank" rel="noopener noreferrer">Pexels photo</a>.</li>
+                <li>Fishing reel by ysnapshotjournal; <a href="https://www.pexels.com/photo/close-up-of-angler-s-hands-with-fishing-reel-36388378/" target="_blank" rel="noopener noreferrer">Pexels photo</a>.</li>
+                <li>Fishing line spooler by JaredMcKenzie; <a href="https://commons.wikimedia.org/wiki/File:Rod_based_line_spooler_3.jpg" target="_blank" rel="noopener noreferrer">CC0 photo</a>.</li>
+                <li>Fishing hooks by daniel jaeger, displayed cropped; <a href="https://commons.wikimedia.org/wiki/File:Fishing_hooks_on_white_surface.jpg" target="_blank" rel="noopener noreferrer">source</a>, <a href="https://creativecommons.org/licenses/by-sa/2.5/" target="_blank" rel="noopener noreferrer">CC BY-SA 2.5</a>.</li>
+                <li>Fishing lures and tackle box by Karola G; <a href="https://www.pexels.com/photo/fishing-lures-on-white-surface-6478087/" target="_blank" rel="noopener noreferrer">lures photo</a> and <a href="https://www.pexels.com/photo/fishing-baits-in-close-up-photography-6478088/" target="_blank" rel="noopener noreferrer">tackle box photo</a>.</li>
+                <li>Fishing nets by Mike van Schoonderwalt; <a href="https://www.pexels.com/photo/hanging-fishing-nets-on-the-background-of-a-blue-sky-5511462/" target="_blank" rel="noopener noreferrer">Pexels photo</a>.</li>
+                <li>Fishing bobber by Chris F; <a href="https://www.pexels.com/photo/bright-red-bobber-hanging-on-thin-thread-4997336/" target="_blank" rel="noopener noreferrer">Pexels photo</a>.</li>
+                <li>Angler in waders by WR Heustis; <a href="https://www.pexels.com/photo/a-man-in-a-gray-hoodie-is-fishing-in-the-water-17721800/" target="_blank" rel="noopener noreferrer">Pexels photo</a>.</li>
+                <li>Boat electronics by Gaspar Zaldo; <a href="https://www.pexels.com/photo/man-using-electronics-on-motorboat-26738308/" target="_blank" rel="noopener noreferrer">Pexels photo</a>.</li>
+                <li>Kayak fishing by Harrison Fitts; <a href="https://www.pexels.com/photo/a-man-sitting-on-the-kayak-9714940/" target="_blank" rel="noopener noreferrer">Pexels photo</a>.</li>
+                <li>Hook removal by Paige Thompson; <a href="https://www.pexels.com/photo/a-close-up-shot-of-a-person-removing-a-fish-hook-from-the-mouth-of-the-fish-13615157/" target="_blank" rel="noopener noreferrer">Pexels photo</a>.</li>
+            </ul>
+            <p>Pexels photos are used under the <a href="https://www.pexels.com/license/" target="_blank" rel="noopener noreferrer">Pexels License</a>.</p>
+        </details>
+    </footer>
+</body>
+</html>

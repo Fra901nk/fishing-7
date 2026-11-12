@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#061c2c">
+    <title>Store Admin | Jadhum Fishing Equipments</title>
+    <link rel="stylesheet" href="/admin.css">
+    <script src="/admin.js" defer></script>
+</head>
+<body>
+    <header class="admin-header">
+        <a class="admin-brand" href="./index.html">Jadhum <span>Fishing Equipments</span></a>
+        <a class="store-link" href="./index.html">View store</a>
+    </header>
+    <main class="admin-main">
+        <section class="login-panel" id="login-panel" aria-labelledby="login-title">
+            <p class="eyebrow">Staff access</p>
+            <h1 id="login-title">Store dashboard</h1>
+            <p>Sign in to manage products, quotations, customers, and orders.</p>
+            <form id="login-form">
+                <label for="admin-password">Admin password</label>
+                <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+                <button class="primary-button" type="submit">Sign in</button>
+                <p class="form-message" id="login-message" role="alert"></p>
+            </form>
+        </section>
+
+        <section class="dashboard" id="dashboard" hidden aria-labelledby="dashboard-title">
+            <div class="dashboard-heading">
+                <div>
+                    <p class="eyebrow">Jadhum Fishing Equipments</p>
+                    <h1 id="dashboard-title">Store dashboard</h1>
+                </div>
+                <button class="secondary-button" id="logout-button" type="button">Sign out</button>
+            </div>
+            <nav class="dashboard-tabs" aria-label="Admin sections">
+                <button class="tab-button is-active" type="button" data-view="overview">Overview</button>
+                <button class="tab-button" type="button" data-view="quotations">Quotations</button>
+                <button class="tab-button" type="button" data-view="products">Products</button>
+                <button class="tab-button" type="button" data-view="categories">Categories</button>
+                <button class="tab-button" type="button" data-view="customers">Customers</button>
+                <button class="tab-button" type="button" data-view="orders">Orders</button>
+            </nav>
+            <p class="dashboard-message" id="dashboard-message" role="status" aria-live="polite"></p>
+
+            <section class="dashboard-panel" data-panel="overview">
+                <div class="section-title">
+                    <div><p class="eyebrow">Business activity</p><h2>Overview</h2></div>
+                    <button class="secondary-button" id="overview-refresh" type="button">Refresh</button>
+                </div>
+                <div class="stats-grid" id="stats-grid"></div>
+                <section class="subsection">
+                    <h3>Recent activity</h3>
+                    <div class="activity-list" id="activity-list"></div>
+                </section>
+            </section>
+
+            <section class="dashboard-panel" data-panel="quotations" hidden>
+                <div class="section-title"><div><p class="eyebrow">Customer price requests</p><h2>Quotations</h2></div></div>
+                <div class="toolbar">
+                    <label class="search-field" for="quotation-search"><span>Search reference or product</span><input id="quotation-search" type="search" placeholder="Reference or product"></label>
+                    <label class="status-field" for="quotation-filter"><span>Status</span><select id="quotation-filter"><option value="all">All statuses</option><option value="pending">New</option><option value="priced">Price sent</option><option value="ordered">Order recorded</option><option value="closed">Closed</option></select></label>
+                    <button class="secondary-button" id="quotation-refresh" type="button">Refresh</button>
+                </div>
+                <div class="quotation-list record-list" id="quotation-list"></div>
+            </section>
+
+            <section class="dashboard-panel" data-panel="products" hidden>
+                <div class="section-title"><div><p class="eyebrow">Catalog</p><h2>Products</h2></div></div>
+                <form class="editor-form" id="product-form">
+                    <h3 id="product-form-title">Add a product</h3>
+                    <input type="hidden" id="product-original-id">
+                    <div class="form-grid">
+                        <label>Product ID<input id="product-id" required maxlength="60" placeholder="e.g. carbon-rod"></label>
+                        <label>Product name<input id="product-name" required maxlength="120"></label>
+                        <label>Category<select id="product-category" required></select></label>
+                        <label>Price (KES)<input id="product-price" type="number" min="0" step="0.01" placeholder="Leave blank to quote"></label>
+                        <label>Photo<select id="product-image" required></select></label>
+                        <label class="wide-field">Description<textarea id="product-description" required maxlength="500" rows="3"></textarea></label>
+                    </div>
+                    <div class="form-actions"><button class="primary-button" type="submit">Save product</button><button class="secondary-button" id="product-cancel" type="button" hidden>Cancel edit</button></div>
+                </form>
+                <div class="toolbar compact-toolbar"><label class="search-field" for="product-search"><span>Search products</span><input id="product-search" type="search" placeholder="Name, ID, or category"></label><button class="secondary-button" id="product-refresh" type="button">Refresh</button></div>
+                <div class="table-wrap"><table><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead><tbody id="product-list"></tbody></table></div>
+            </section>
+
+            <section class="dashboard-panel" data-panel="categories" hidden>
+                <div class="section-title"><div><p class="eyebrow">Catalog structure</p><h2>Categories</h2></div></div>
+                <form class="inline-form" id="category-form"><input type="hidden" id="category-id"><label for="category-name">Category name</label><input id="category-name" required maxlength="80" placeholder="e.g. Fishing Accessories"><button class="primary-button" type="submit">Add category</button><button class="secondary-button" id="category-cancel" type="button" hidden>Cancel edit</button></form>
+                <div class="table-wrap"><table><thead><tr><th>Category</th><th>Products</th><th>Actions</th></tr></thead><tbody id="category-list"></tbody></table></div>
+            </section>
+
+            <section class="dashboard-panel" data-panel="customers" hidden>
+                <div class="section-title"><div><p class="eyebrow">Customer records</p><h2>Customers</h2></div></div>
+                <div class="toolbar compact-toolbar"><label class="search-field" for="customer-search"><span>Search customers</span><input id="customer-search" type="search" placeholder="Name, email, or phone"></label><button class="secondary-button" id="customer-refresh" type="button">Refresh</button></div>
+                <div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Orders</th><th>Last order</th></tr></thead><tbody id="customer-list"></tbody></table></div>
+                <p class="helper-text">Customer records are added when staff record an order from a quotation.</p>
+            </section>
+
+            <section class="dashboard-panel" data-panel="orders" hidden>
+                <div class="section-title"><div><p class="eyebrow">Staff-recorded sales</p><h2>Orders</h2></div></div>
+                <div class="toolbar">
+                    <label class="search-field" for="order-search"><span>Search order or customer</span><input id="order-search" type="search" placeholder="Order reference, name, or contact"></label>
+                    <label class="status-field" for="order-filter"><span>Status</span><select id="order-filter"><option value="all">All statuses</option><option value="received">Received</option><option value="processing">Processing</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select></label>
+                    <button class="secondary-button" id="order-refresh" type="button">Refresh</button>
+                </div>
+                <div class="record-list" id="order-list"></div>
+                <p class="helper-text">Online checkout is not enabled. Orders are recorded here by staff after confirming a customer's order.</p>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
